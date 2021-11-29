@@ -1,0 +1,10 @@
+tid = getenv('SLURM_ARRAY_TASK_ID');
+disp(['Trial number: ' tid]);
+[XX,YY,ZZ] = meshgrid(1:10,[2 5 6],[0 1]);
+iid = [XX(:) YY(:) ZZ(:)];
+tid = str2double(tid);
+nseed = iid(tid,1);
+ftype = iid(tid,2);
+minmax = iid(tid,2)==1;
+nswaps = 1e4;
+autoart(nseed,ftype,minmax,nswaps);
